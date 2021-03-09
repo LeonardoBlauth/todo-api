@@ -25,7 +25,7 @@ class TaskPolicy
     }
 
     public function update(?User $user, ?Task $task = null) {
-        return $task->completed == false;
+        return $task->completed == false || strpos($task, '(EDIT)') == true || strpos($task, '(edit)') == true;
     }
 
     public function toogle(?User $user, ?Task $task) {

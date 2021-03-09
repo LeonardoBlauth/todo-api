@@ -35,16 +35,10 @@ class TaskController extends Controller
      */
     public function update($id)
     {
-            // Ou o Texto tem a substring (EDIT) ou a task esta incompleta
-                App::make(UpdateRequest::class);
-            $task = Task::findOrFail($id);
+        App::make(UpdateRequest::class);
+        $task = Task::findOrFail($id);
         $this->authorize('update', $task);
         return $task->update(Input::all());
-
-        //$existingTask = Task::findOrFail($id);
-        //$existingTask->update(Input::all());
-
-        //return $existingTask;
     }
 
     public function toogle($id)
@@ -54,11 +48,6 @@ class TaskController extends Controller
         $this->authorize('toogle', $task);
         $task->save();
         return $task;
-
-        //$existingTask = Task::findOrFail($id);
-        //$existingTask->update(Input::all());
-
-        //return $existingTask;
     }
 
     /**
