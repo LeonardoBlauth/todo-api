@@ -33,7 +33,7 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
             // Ou o Texto tem a substring (EDIT) ou a task esta incompleta
                 App::make(UpdateRequest::class);
@@ -47,9 +47,8 @@ class TaskController extends Controller
         //return $existingTask;
     }
 
-    public function toogle(Request $request, $id)
+    public function toogle($id)
     {
-        // Ou o Texto tem a substring (EDIT) ou a task esta incompleta
         $task = Task::findOrFail($id);
         $task->completed = !$task->completed;
         $this->authorize('toogle', $task);
@@ -70,7 +69,6 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        // A task tem que estar completa
         $task = Task::findOrFail($id);
         $this->authorize('destroy', $task);
         $task->delete();

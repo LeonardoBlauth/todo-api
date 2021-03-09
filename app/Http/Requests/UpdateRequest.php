@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'task' => 'nullable|max:255|unique:tasks',
-            'completed' => 'nullable|boolean'
+            'completed' => 'boolean'
         ];
     }
 }

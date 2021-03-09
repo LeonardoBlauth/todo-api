@@ -25,8 +25,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'task' => 'required|max:255|unique:tasks',
-            'completed' => 'boolean',
-            'completed_at' => 'nullable'
+            'completed' => 'boolean'
         ];
     }
 }
